@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Néstor Pérez · Desarrollador Web</title>
+  <meta name="description" content="Desarrollador web con perfil híbrido: DAW + Administración y Finanzas. Automatización con IA, full stack, WordPress. Zamora o remoto."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --bg:#080808;--bg2:#0f0f0f;--bg3:#141414;--bg4:#1a1a1a;
+      --g:#a8ff78;--g2:#78ffd6;--g-dim:#3a5a2a;--g-dark:#0d1f0a;
+      --text:#f0f0f0;--muted:#555;--muted2:#888;--border:#1f1f1f;
+      --serif:'DM Serif Display',serif;--mono:'DM Mono',monospace;--sans:'DM Sans',sans-serif;
+    }
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6}
+ 
+    /* ── NAV ── */
+    nav{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:26px 48px;position:sticky;top:0;
+      background:rgba(8,8,8,0.96);backdrop-filter:blur(12px);
+      z-index:100;border-bottom:1px solid var(--border);
+    }
+    .logo{font-family:var(--mono);font-size:13px;color:var(--g);letter-spacing:0.05em}
+    .nav-links{display:flex;gap:28px}
+    .nav-links a{
+      font-family:var(--mono);font-size:10px;color:var(--muted);
+      text-decoration:none;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.2s;
+    }
+    .nav-links a:hover{color:var(--g)}
+ 
+    /* ── LAYOUT ── */
+    .wrap{max-width:960px;margin:0 auto;padding:0 40px 120px}
+ 
+    /* ── HERO ── */
+    .hero{
+      padding:100px 0 80px;
+      display:grid;grid-template-columns:1fr 220px;gap:64px;align-items:center;
+    }
+    .hero-available{
+      display:inline-flex;align-items:center;gap:8px;
+      font-family:var(--mono);font-size:10px;color:var(--g);
+      letter-spacing:0.1em;text-transform:uppercase;
+      margin-bottom:28px;border:1px solid var(--g-dim);padding:6px 14px;
+    }
+    .hero-available::before{
+      content:'';width:6px;height:6px;border-radius:50%;
+      background:var(--g);animation:pulse 2s infinite;
+    }
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+    .hero h1{
+      font-family:var(--serif);font-size:clamp(46px,5.5vw,68px);
+      color:#fff;line-height:1.05;margin-bottom:10px;
+    }
+    .hero h1 em{color:var(--g);font-style:italic}
+    .hero-subtitle{
+      font-family:var(--mono);font-size:11px;color:var(--muted2);
+      letter-spacing:0.15em;text-transform:uppercase;margin-bottom:24px;
+    }
+    .hero-desc{font-size:15px;color:#888;line-height:1.85;max-width:480px;margin-bottom:36px}
+    .hero-desc strong{color:var(--muted2);font-weight:500}
+    .cta-row{display:flex;gap:10px;flex-wrap:wrap}
+    .btn-p{
+      font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
+      padding:13px 26px;background:var(--g);color:#000;border:none;
+      cursor:pointer;font-weight:500;transition:opacity 0.2s;text-decoration:none;display:inline-block;
+    }
+    .btn-p:hover{opacity:0.8}
+    .btn-g{
+      font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
+      padding:13px 26px;background:transparent;color:var(--g);
+      border:1px solid var(--g-dim);cursor:pointer;transition:all 0.2s;
+      text-decoration:none;display:inline-block;
+    }
+    .btn-g:hover{border-color:var(--g);background:var(--g-dark)}
+ 
+    /* ── FOTO HERO ── */
+    .hero-img-wrap{position:relative;width:220px;flex-shrink:0}
+    .hero-img-frame{
+      width:220px;height:280px;background:var(--bg3);
+      border:1px solid var(--border);overflow:hidden;position:relative;cursor:pointer;
+    }
+    .hero-img-frame:hover .upload-overlay{opacity:1}
+    .hero-img-real{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+    .upload-overlay{
+      position:absolute;inset:0;background:rgba(0,0,0,0.7);
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      gap:10px;opacity:0;transition:opacity 0.2s;
+    }
+    /* — REEMPLAZA ESTA URL CON TU FOTO — */
+    /* Para añadir tu foto: sustituye el src del <img id="heroImg"> por la ruta de tu imagen */
+    /* Ejemplo: src="foto.jpg"  (si subes foto.jpg al mismo repositorio) */
+    .upload-hint{font-family:var(--mono);font-size:9px;color:var(--g);letter-spacing:0.1em;text-transform:uppercase;text-align:center}
+    .img-tag{
+      position:absolute;bottom:-1px;left:-1px;right:-1px;
+      background:var(--bg);border:1px solid var(--border);padding:10px 14px;
+    }
+    .img-tag-name{font-family:var(--serif);font-size:14px;color:#fff}
+    .img-tag-loc{font-family:var(--mono);font-size:9px;color:var(--muted);margin-top:3px}
+ 
+    /* ── SECCIONES ── */
+    .sec{padding:72px 0;border-top:1px solid var(--border)}
+    .sec-label{display:flex;align-items:center;gap:16px;margin-bottom:48px}
+    .sec-num{font-family:var(--mono);font-size:10px;color:var(--g)}
+    .sec-title{font-family:var(--serif);font-size:28px;color:#fff;white-space:nowrap}
+    .sec-line{flex:1;height:1px;background:var(--border)}
+ 
+    /* ── SOBRE MÍ ── */
+    .about-grid{display:grid;grid-template-columns:3fr 2fr;gap:48px;align-items:start}
+    .about-p{font-size:15px;color:#888;line-height:1.85;margin-bottom:18px}
+    .about-p strong{color:var(--g);font-weight:500}
+    .pillars{display:flex;flex-direction:column;gap:2px}
+    .pillar{
+      background:var(--bg2);border:1px solid var(--border);
+      padding:18px 20px;border-left:2px solid var(--g);transition:background 0.2s;
+    }
+    .pillar:hover{background:var(--bg3)}
+    .pillar-label{font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px}
+    .pillar-val{font-family:var(--serif);font-size:17px;color:#fff}
+ 
+    /* ── EXPERIENCIA ── */
+    .exp-cards{display:flex;flex-direction:column;gap:2px}
+    .exp-card{
+      background:var(--bg2);border:1px solid var(--border);
+      overflow:hidden;transition:border-color 0.2s;cursor:pointer;
+    }
+    .exp-card:hover{border-color:var(--g-dim)}
+    .exp-card.open{border-color:var(--g);border-left:3px solid var(--g)}
+    .exp-top{padding:26px 28px;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:start}
+    .exp-role{font-family:var(--serif);font-size:21px;color:#fff;margin-bottom:5px}
+    .exp-co{font-family:var(--mono);font-size:11px;color:var(--g)}
+    .exp-period{font-family:var(--mono);font-size:10px;color:var(--muted);text-align:right;white-space:nowrap;margin-top:4px}
+    .exp-body{padding:0 28px 26px;display:none}
+    .exp-card.open .exp-body{display:block}
+    .exp-body p{font-size:14px;color:#777;line-height:1.75;margin-bottom:14px}
+    .exp-body ul{list-style:none;margin-bottom:14px}
+    .exp-body ul li{
+      font-size:13px;color:#777;line-height:1.7;
+      padding:5px 0 5px 18px;position:relative;
+    }
+    .exp-body ul li::before{content:'→';position:absolute;left:0;color:var(--g);font-size:11px;top:6px}
+    .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+    .chip{
+      font-family:var(--mono);font-size:9px;color:var(--g);
+      border:1px solid var(--g-dim);padding:4px 9px;
+      letter-spacing:0.05em;background:var(--g-dark);
+    }
+ 
+    /* ── QUÉ PUEDO HACER ── */
+    .can-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px}
+    .can-card{
+      background:var(--bg2);border:1px solid var(--border);
+      padding:28px 24px;transition:all 0.25s;position:relative;overflow:hidden;
+    }
+    .can-card:hover{border-color:var(--g-dim);background:var(--bg3)}
+    .can-card::after{
+      content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+      background:linear-gradient(90deg,var(--g),var(--g2));
+      transform:scaleX(0);transition:transform 0.35s;transform-origin:left;
+    }
+    .can-card:hover::after{transform:scaleX(1)}
+    .can-num{font-family:var(--mono);font-size:10px;color:var(--muted);margin-bottom:16px}
+    .can-title{font-family:var(--serif);font-size:17px;color:#fff;margin-bottom:10px;line-height:1.3}
+    .can-desc{font-size:13px;color:#666;line-height:1.7}
+ 
+    /* ── HABILIDADES ── */
+    .skills-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:36px}
+    .sk-label{
+      font-family:var(--mono);font-size:9px;color:var(--muted);
+      letter-spacing:0.12em;text-transform:uppercase;
+      margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border);
+    }
+    .sk-list{display:flex;flex-direction:column;gap:7px}
+    .sk-item{display:flex;align-items:center;gap:10px;font-size:13px;color:#888}
+    .sk-dot{width:4px;height:4px;border-radius:50%;background:var(--g);flex-shrink:0}
+ 
+    /* ── CONTACTO ── */
+    .contact-split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+    .contact-h{font-family:var(--serif);font-size:40px;color:#fff;line-height:1.1;margin-bottom:18px}
+    .contact-h em{color:var(--g);font-style:italic}
+    .contact-sub{font-size:14px;color:var(--muted2);line-height:1.8}
+    .contact-items{display:flex;flex-direction:column;gap:8px}
+    .c-item{
+      display:flex;flex-direction:column;padding:16px 18px;
+      border:1px solid var(--border);text-decoration:none;transition:all 0.2s;
+    }
+    .c-item:hover{border-color:var(--g);background:var(--g-dark)}
+    .c-label{font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px}
+    .c-val{font-size:13px;color:var(--muted2)}
+ 
+    /* ── FOOTER ── */
+    footer{
+      padding:36px 0;border-top:1px solid var(--border);
+      display:flex;justify-content:space-between;align-items:center;
+    }
+    .ft{font-family:var(--mono);font-size:10px;color:var(--muted)}
+ 
+    /* ── RESPONSIVE ── */
+    @media(max-width:768px){
+      nav{padding:20px 24px}
+      .nav-links{display:none}
+      .wrap{padding:0 20px 80px}
+      .hero{grid-template-columns:1fr;gap:40px;padding:60px 0 40px}
+      .hero-img-wrap{width:160px}
+      .hero-img-frame{width:160px;height:200px}
+      .about-grid{grid-template-columns:1fr}
+      .can-grid{grid-template-columns:1fr 1fr}
+      .skills-wrap{grid-template-columns:1fr 1fr}
+      .contact-split{grid-template-columns:1fr}
+    }
+    @media(max-width:520px){
+      .can-grid{grid-template-columns:1fr}
+      .skills-wrap{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+ 
+<nav>
+  <span class="logo">np.dev</span>
+  <div class="nav-links">
+    <a href="#sobre">sobre</a>
+    <a href="#experiencia">experiencia</a>
+    <a href="#puedo">qué puedo hacer</a>
+    <a href="#skills">skills</a>
+    <a href="#contacto">contacto</a>
+  </div>
+</nav>
+ 
+<div class="wrap">
+ 
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="hero-available">Disponible para trabajar</div>
+      <h1>Desarrollo web.<br><em>Con visión</em><br>de negocio.</h1>
+      <div class="hero-subtitle">Néstor Pérez · Zamora, España</div>
+      <p class="hero-desc">
+        Perfil híbrido: código y finanzas.
+        <strong>Construyo herramientas que resuelven problemas reales</strong>
+        — no espero que me los señalen.
+      </p>
+      <div class="cta-row">
+        <a class="btn-p" href="#puedo">Qué puedo hacer</a>
+        <a class="btn-g" href="#contacto">Contactar</a>
+      </div>
+    </div>
+    <div class="hero-img-wrap">
+      <div class="hero-img-frame">
+        <!--
+          ════════════════════════════════════════
+          AÑADE TU FOTO AQUÍ:
+          1. Sube tu foto al repo con el nombre "foto.jpg"
+          2. Cambia src="" por src="foto.jpg"
+          ════════════════════════════════════════
+        -->
+        <img class="hero-img-real" src="" alt="Néstor Pérez"
+             onerror="this.style.display='none';document.getElementById('noimg').style.display='flex'"/>
+        <div id="noimg" style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:10px">
+          <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-align:center;letter-spacing:0.1em;padding:20px">
+            AÑADE TU FOTO<br><br>
+            src="foto.jpg"
+          </div>
+        </div>
+      </div>
+      <div class="img-tag">
+        <div class="img-tag-name">Néstor Pérez</div>
+        <div class="img-tag-loc">Zamora · España</div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- SOBRE MÍ -->
+  <section class="sec" id="sobre">
+    <div class="sec-label">
+      <span class="sec-num">01</span>
+      <span class="sec-title">Sobre mí</span>
+      <div class="sec-line"></div>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p class="about-p">
+          Soy desarrollador web con un perfil poco habitual: combino un
+          <strong>Grado Superior en DAW</strong> con formación en
+          <strong>Administración y Finanzas</strong>. Eso me da algo que pocos juniors tienen
+          — entiendo el negocio detrás del código y el código detrás del negocio.
+        </p>
+        <p class="about-p">
+          Me adapto rápido a entornos nuevos y trabajo con autonomía en proyectos complejos.
+          En mis prácticas <strong>desarrollé desde cero una herramienta de automatización con IA</strong>
+          sin que nadie me lo pidiera. Vi el problema, diseñé la solución y la desplegué en producción.
+        </p>
+        <p class="about-p">
+          Abierto a oportunidades en <strong>Zamora o en remoto</strong>.
+        </p>
+      </div>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-label">Formación técnica</div>
+          <div class="pillar-val">DAW · PHP · Node.js</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-label">Formación de negocio</div>
+          <div class="pillar-val">Adm. y Finanzas</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-label">Experiencia internacional</div>
+          <div class="pillar-val">Bristol, UK</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-label">IA en producción</div>
+          <div class="pillar-val">Desplegado · 2026</div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- EXPERIENCIA -->
+  <section class="sec" id="experiencia">
+    <div class="sec-label">
+      <span class="sec-num">02</span>
+      <span class="sec-title">Experiencia</span>
+      <div class="sec-line"></div>
+    </div>
+    <div class="exp-cards">
+ 
+      <div class="exp-card open" onclick="toggleCard(this)">
+        <div class="exp-top">
+          <div>
+            <div class="exp-role">Desarrollador Web &amp; Automatización IA</div>
+            <div class="exp-co">Viajes Carmi SL · Camino de Santiago Reservas — Zamora</div>
+          </div>
+          <div class="exp-period">03/2026 — actualidad</div>
+        </div>
+        <div class="exp-body">
+          <p>
+            Único desarrollador en una agencia especializada en viajes del Camino de Santiago.
+            Autonomía total sobre las decisiones técnicas y la arquitectura de los proyectos.
+          </p>
+          <ul>
+            <li>Diseño e implementación de <strong>FacturApp</strong>: herramienta con IA (GPT-4 Vision) para extracción automática de datos de facturas. Reduce horas de trabajo manual del departamento de administración a minutos.</li>
+            <li>Procesamiento de múltiples formatos: PDF, Word, imágenes escaneadas, Excel. Integración con CRM y Google Drive vía rclone.</li>
+            <li>Desarrollo y migración del sitio web corporativo a WordPress con Elementor.</li>
+            <li>Despliegue y mantenimiento en servidor Debian propio con Docker Compose.</li>
+            <li>Herramientas internas: generador de presupuestos para el equipo comercial, directorio de proveedores de transporte.</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">Node.js</span>
+            <span class="chip">GPT-4 Vision</span>
+            <span class="chip">Docker</span>
+            <span class="chip">WordPress</span>
+            <span class="chip">n8n</span>
+            <span class="chip">Express</span>
+            <span class="chip">Google Drive API</span>
+            <span class="chip">Debian</span>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="exp-card" onclick="toggleCard(this)">
+        <div class="exp-top">
+          <div>
+            <div class="exp-role">Desarrollo de Negocio</div>
+            <div class="exp-co">EurocoinPay.io — León</div>
+          </div>
+          <div class="exp-period">03/2022 — 06/2022</div>
+        </div>
+        <div class="exp-body">
+          <ul>
+            <li>Captación de contactos profesionales B2B para pasarela de pagos en criptomonedas.</li>
+            <li>Presentación de servicios fintech a potenciales clientes empresariales.</li>
+            <li>Primer contacto con el sector blockchain y pagos digitales.</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">Fintech</span>
+            <span class="chip">B2B</span>
+            <span class="chip">Blockchain</span>
+          </div>
+        </div>
+      </div>
+ 
+    </div>
+  </section>
+ 
+  <!-- QUÉ PUEDO HACER -->
+  <section class="sec" id="puedo">
+    <div class="sec-label">
+      <span class="sec-num">03</span>
+      <span class="sec-title">Qué puedo hacer por tu empresa</span>
+      <div class="sec-line"></div>
+    </div>
+    <div class="can-grid">
+      <div class="can-card">
+        <div class="can-num">01</div>
+        <div class="can-title">Automatizar procesos con IA</div>
+        <div class="can-desc">Identifico tareas repetitivas y construyo herramientas que las eliminan. Extracción de datos, procesamiento de documentos, flujos automáticos con n8n.</div>
+      </div>
+      <div class="can-card">
+        <div class="can-num">02</div>
+        <div class="can-title">Desarrollo web full stack</div>
+        <div class="can-desc">Aplicaciones web desde cero con arquitectura limpia. PHP MVC, Node.js, PostgreSQL, Docker. Sin frameworks innecesarios cuando no hacen falta.</div>
+      </div>
+      <div class="can-card">
+        <div class="can-num">03</div>
+        <div class="can-title">Sitios WordPress profesionales</div>
+        <div class="can-desc">Desarrollo, migración y optimización de sitios WordPress. Elementor, plugins, rendimiento y SEO técnico básico.</div>
+      </div>
+      <div class="can-card">
+        <div class="can-num">04</div>
+        <div class="can-title">Despliegue y mantenimiento</div>
+        <div class="can-desc">Servidores Linux/Debian, Docker Compose, integración con servicios cloud. Monto y mantengo infraestructura para que las aplicaciones funcionen en producción.</div>
+      </div>
+      <div class="can-card">
+        <div class="can-num">05</div>
+        <div class="can-title">Herramientas internas a medida</div>
+        <div class="can-desc">Aplicaciones para equipos: generadores de presupuestos, directorios, gestión documental. Soluciones que el equipo realmente usa.</div>
+      </div>
+      <div class="can-card">
+        <div class="can-num">06</div>
+        <div class="can-title">Visión técnica + de negocio</div>
+        <div class="can-desc">Formación en Administración y Finanzas. Entiendo los procesos de negocio que hay que digitalizar y cómo hablar con el equipo no técnico.</div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- HABILIDADES -->
+  <section class="sec" id="skills">
+    <div class="sec-label">
+      <span class="sec-num">04</span>
+      <span class="sec-title">Habilidades técnicas</span>
+      <div class="sec-line"></div>
+    </div>
+    <div class="skills-wrap">
+      <div>
+        <div class="sk-label">Backend</div>
+        <div class="sk-list">
+          <div class="sk-item"><span class="sk-dot"></span>Node.js · Express</div>
+          <div class="sk-item"><span class="sk-dot"></span>PHP 8 · MVC</div>
+          <div class="sk-item"><span class="sk-dot"></span>REST API</div>
+          <div class="sk-item"><span class="sk-dot"></span>PostgreSQL · MySQL</div>
+        </div>
+      </div>
+      <div>
+        <div class="sk-label">Frontend</div>
+        <div class="sk-list">
+          <div class="sk-item"><span class="sk-dot"></span>JavaScript</div>
+          <div class="sk-item"><span class="sk-dot"></span>HTML · CSS</div>
+          <div class="sk-item"><span class="sk-dot"></span>WordPress · Elementor</div>
+          <div class="sk-item"><span class="sk-dot"></span>Bootstrap</div>
+        </div>
+      </div>
+      <div>
+        <div class="sk-label">DevOps &amp; Infra</div>
+        <div class="sk-list">
+          <div class="sk-item"><span class="sk-dot"></span>Docker · Compose</div>
+          <div class="sk-item"><span class="sk-dot"></span>Linux · Debian</div>
+          <div class="sk-item"><span class="sk-dot"></span>Git · GitHub</div>
+          <div class="sk-item"><span class="sk-dot"></span>rclone · Google Drive</div>
+        </div>
+      </div>
+      <div>
+        <div class="sk-label">IA &amp; Automatización</div>
+        <div class="sk-list">
+          <div class="sk-item"><span class="sk-dot"></span>GPT-4 Vision</div>
+          <div class="sk-item"><span class="sk-dot"></span>n8n workflows</div>
+          <div class="sk-item"><span class="sk-dot"></span>Prompt engineering</div>
+          <div class="sk-item"><span class="sk-dot"></span>OCR · Gotenberg</div>
+        </div>
+      </div>
+      <div>
+        <div class="sk-label">Negocio &amp; Gestión</div>
+        <div class="sk-list">
+          <div class="sk-item"><span class="sk-dot"></span>Contasol · Factusol</div>
+          <div class="sk-item"><span class="sk-dot"></span>Excel · Access</div>
+          <div class="sk-item"><span class="sk-dot"></span>Gestión documental</div>
+          <div class="sk-item"><span class="sk-dot"></span>Procesos administrativos</div>
+        </div>
+      </div>
+      <div>
+        <div class="sk-label">Idiomas</div>
+        <div class="sk-list">
+          <div class="sk-item"><span class="sk-dot"></span>Español nativo</div>
+          <div class="sk-item"><span class="sk-dot"></span>Inglés B2</div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- CONTACTO -->
+  <section class="sec" id="contacto">
+    <div class="sec-label">
+      <span class="sec-num">05</span>
+      <span class="sec-title">Contacto</span>
+      <div class="sec-line"></div>
+    </div>
+    <div class="contact-split">
+      <div>
+        <div class="contact-h">¿Hablamos<br><em>en serio?</em></div>
+        <p class="contact-sub">
+          Disponible para incorporación inmediata en Zamora o en remoto.
+          Respondo rápido y voy al grano.
+        </p>
+      </div>
+      <div class="contact-items">
+        <a class="c-item" href="https://linkedin.com/in/nestor-perez-web" target="_blank" rel="noopener">
+          <span class="c-label">LinkedIn</span>
+          <span class="c-val">linkedin.com/in/nestor-perez-web</span>
+        </a>
+        <a class="c-item" href="https://github.com/NestorSoftware" target="_blank" rel="noopener">
+          <span class="c-label">GitHub</span>
+          <span class="c-val">github.com/NestorSoftware</span>
+        </a>
+        <a class="c-item" href="mailto:nestoradf1@gmail.com">
+          <span class="c-label">Email</span>
+          <span class="c-val">nestoradf1@gmail.com</span>
+        </a>
+      </div>
+    </div>
+  </section>
+ 
+</div><!-- /wrap -->
+ 
+<footer style="max-width:960px;margin:0 auto;padding:36px 40px;border-top:1px solid var(--border);display:flex;justify-content:space-between">
+  <span class="ft">Néstor Pérez · 2026</span>
+  <span class="ft">Zamora, España</span>
+</footer>
+ 
+<script>
+  function toggleCard(el){
+    var cards=document.querySelectorAll('.exp-card');
+    var wasOpen=el.classList.contains('open');
+    cards.forEach(function(c){c.classList.remove('open')});
+    if(!wasOpen)el.classList.add('open');
+  }
+</script>
+ 
+</body>
+</html>
