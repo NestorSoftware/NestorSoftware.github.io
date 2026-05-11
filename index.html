@@ -4,129 +4,196 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Néstor Pérez · Desarrollador Web</title>
-  <meta name="description" content="Desarrollador web con perfil híbrido: DAW + Administración y Finanzas. Automatización con IA, full stack, WordPress. Zamora o remoto."/>
+  <meta name="description" content="Automatizo procesos con IA. Desarrollador full stack con perfil técnico y de negocio. Zamora o remoto."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     :root{
-      --bg:#080808;--bg2:#0f0f0f;--bg3:#141414;--bg4:#1a1a1a;
-      --g:#a8ff78;--g2:#78ffd6;--g-dim:#3a5a2a;--g-dark:#0d1f0a;
-      --text:#f0f0f0;--muted:#555;--muted2:#888;--border:#1f1f1f;
+      --bg:#080808;--bg2:#0e0e0e;--bg3:#141414;--bg4:#1a1a1a;
+      --g:#a8ff78;--g2:#78ffd6;--g-dim:#2d4a1e;--g-dark:#091505;
+      --text:#f0f0f0;--muted:#777;--muted2:#aaa;--border:#1e1e1e;
       --serif:'DM Serif Display',serif;--mono:'DM Mono',monospace;--sans:'DM Sans',sans-serif;
     }
     html{scroll-behavior:smooth}
     body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6}
- 
-    /* ── NAV ── */
+
+    /* NAV */
     nav{
       display:flex;justify-content:space-between;align-items:center;
-      padding:26px 48px;position:sticky;top:0;
-      background:rgba(8,8,8,0.96);backdrop-filter:blur(12px);
+      padding:22px 52px;position:sticky;top:0;
+      background:rgba(8,8,8,0.97);backdrop-filter:blur(16px);
       z-index:100;border-bottom:1px solid var(--border);
     }
-    .logo{font-family:var(--mono);font-size:13px;color:var(--g);letter-spacing:0.05em}
-    .nav-links{display:flex;gap:28px}
+    .logo{font-family:var(--mono);font-size:13px;color:var(--g);letter-spacing:0.06em}
+    .nav-links{display:flex;gap:28px;align-items:center}
     .nav-links a{
       font-family:var(--mono);font-size:10px;color:var(--muted);
-      text-decoration:none;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.2s;
+      text-decoration:none;letter-spacing:0.13em;text-transform:uppercase;transition:color 0.2s;
     }
     .nav-links a:hover{color:var(--g)}
- 
-    /* ── LAYOUT ── */
-    .wrap{max-width:960px;margin:0 auto;padding:0 40px 120px}
- 
-    /* ── HERO ── */
-    .hero{
-      padding:100px 0 80px;
-      display:grid;grid-template-columns:1fr 220px;gap:64px;align-items:center;
+    .nav-cta{
+      font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
+      padding:9px 20px;background:linear-gradient(90deg,var(--g),var(--g2));color:#000;
+      text-decoration:none;font-weight:500;transition:opacity 0.2s;
+      box-shadow:0 0 24px rgba(168,255,120,0.18);
     }
-    .hero-available{
+    .nav-cta:hover{opacity:0.85}
+
+    /* LAYOUT */
+    .wrap{max-width:960px;margin:0 auto;padding:0 44px 120px}
+
+    /* HERO */
+    .hero{
+      padding:96px 0 80px;
+      display:grid;grid-template-columns:1fr 210px;gap:68px;align-items:center;
+    }
+    .avail-badge{
       display:inline-flex;align-items:center;gap:8px;
       font-family:var(--mono);font-size:10px;color:var(--g);
       letter-spacing:0.1em;text-transform:uppercase;
-      margin-bottom:28px;border:1px solid var(--g-dim);padding:6px 14px;
+      margin-bottom:32px;border:1px solid var(--g-dim);padding:7px 16px;
+      width:fit-content;background:var(--g-dark);
     }
-    .hero-available::before{
+    .avail-badge::before{
       content:'';width:6px;height:6px;border-radius:50%;
-      background:var(--g);animation:pulse 2s infinite;
+      background:var(--g);animation:pulse 2s infinite;flex-shrink:0;
     }
-    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.2}}
+
+    /* Métrica impacto */
+    .hero-impact{
+      display:flex;align-items:baseline;gap:12px;
+      font-family:var(--mono);margin-bottom:24px;flex-wrap:wrap;
+    }
+    .impact-before{font-size:clamp(32px,4vw,48px);color:#2e2e2e;text-decoration:line-through;text-decoration-color:#222}
+    .impact-arrow{font-size:20px;color:#333}
+    .impact-after{font-size:clamp(32px,4vw,48px);color:var(--g);font-weight:500}
+    .impact-caption{font-size:10px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;line-height:1.5}
+
     .hero h1{
-      font-family:var(--serif);font-size:clamp(46px,5.5vw,68px);
+      font-family:var(--serif);font-size:clamp(40px,5.2vw,62px);
       color:#fff;line-height:1.05;margin-bottom:10px;
     }
     .hero h1 em{color:var(--g);font-style:italic}
     .hero-subtitle{
-      font-family:var(--mono);font-size:11px;color:var(--muted2);
-      letter-spacing:0.15em;text-transform:uppercase;margin-bottom:24px;
+      font-family:var(--mono);font-size:11px;color:var(--muted);
+      letter-spacing:0.15em;text-transform:uppercase;margin-bottom:20px;
     }
-    .hero-desc{font-size:15px;color:#888;line-height:1.85;max-width:480px;margin-bottom:36px}
-    .hero-desc strong{color:var(--muted2);font-weight:500}
+    .hero-desc{font-size:15px;color:var(--muted2);line-height:1.85;max-width:460px;margin-bottom:34px}
+    .hero-desc strong{color:#d0d0d0;font-weight:500}
+    .highlight{background:linear-gradient(transparent 62%,rgba(168,255,120,0.18) 62%)}
     .cta-row{display:flex;gap:10px;flex-wrap:wrap}
     .btn-p{
       font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
-      padding:13px 26px;background:var(--g);color:#000;border:none;
-      cursor:pointer;font-weight:500;transition:opacity 0.2s;text-decoration:none;display:inline-block;
+      padding:13px 28px;background:linear-gradient(90deg,var(--g),var(--g2));color:#000;
+      border:none;cursor:pointer;font-weight:500;transition:opacity 0.2s;
+      text-decoration:none;display:inline-block;
+      box-shadow:0 0 24px rgba(168,255,120,0.2);
     }
-    .btn-p:hover{opacity:0.8}
+    .btn-p:hover{opacity:0.82}
     .btn-g{
       font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
-      padding:13px 26px;background:transparent;color:var(--g);
+      padding:13px 28px;background:transparent;color:var(--g);
       border:1px solid var(--g-dim);cursor:pointer;transition:all 0.2s;
       text-decoration:none;display:inline-block;
     }
     .btn-g:hover{border-color:var(--g);background:var(--g-dark)}
- 
-    /* ── FOTO HERO ── */
-    .hero-img-wrap{position:relative;width:220px;flex-shrink:0}
+
+    /* FOTO */
+    .hero-img-wrap{position:relative;width:210px;flex-shrink:0}
     .hero-img-frame{
-      width:220px;height:280px;background:var(--bg3);
-      border:1px solid var(--border);overflow:hidden;position:relative;cursor:pointer;
+      width:210px;height:268px;background:var(--bg3);
+      border:1px solid var(--border);overflow:hidden;position:relative;
     }
-    .hero-img-frame:hover .upload-overlay{opacity:1}
-    .hero-img-real{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
-    .upload-overlay{
-      position:absolute;inset:0;background:rgba(0,0,0,0.7);
-      display:flex;flex-direction:column;align-items:center;justify-content:center;
-      gap:10px;opacity:0;transition:opacity 0.2s;
-    }
-    /* — REEMPLAZA ESTA URL CON TU FOTO — */
-    /* Para añadir tu foto: sustituye el src del <img id="heroImg"> por la ruta de tu imagen */
-    /* Ejemplo: src="foto.jpg"  (si subes foto.jpg al mismo repositorio) */
-    .upload-hint{font-family:var(--mono);font-size:9px;color:var(--g);letter-spacing:0.1em;text-transform:uppercase;text-align:center}
+    .hero-img-frame img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
     .img-tag{
       position:absolute;bottom:-1px;left:-1px;right:-1px;
       background:var(--bg);border:1px solid var(--border);padding:10px 14px;
     }
     .img-tag-name{font-family:var(--serif);font-size:14px;color:#fff}
     .img-tag-loc{font-family:var(--mono);font-size:9px;color:var(--muted);margin-top:3px}
- 
-    /* ── SECCIONES ── */
-    .sec{padding:72px 0;border-top:1px solid var(--border)}
-    .sec-label{display:flex;align-items:center;gap:16px;margin-bottom:48px}
-    .sec-num{font-family:var(--mono);font-size:10px;color:var(--g)}
-    .sec-title{font-family:var(--serif);font-size:28px;color:#fff;white-space:nowrap}
+
+    /* STAT STRIP */
+    .stat-strip{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border)}
+    .stat-item{
+      padding:28px 22px;border-right:1px solid var(--border);
+      position:relative;overflow:hidden;transition:background 0.2s;
+    }
+    .stat-item:last-child{border-right:none}
+    .stat-item:hover{background:var(--bg2)}
+    .stat-item::after{
+      content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+      background:linear-gradient(90deg,var(--g),var(--g2));
+      transform:scaleX(0);transition:transform 0.3s;transform-origin:left;
+    }
+    .stat-item:hover::after{transform:scaleX(1)}
+    .stat-num{font-family:var(--mono);font-size:26px;color:var(--g);font-weight:500;margin-bottom:6px}
+    .stat-label{font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;line-height:1.6}
+
+    /* SECCIONES */
+    .sec{padding:96px 0;border-top:1px solid var(--border)}
+    .sec-alt{background:var(--bg2);margin:0 -44px;padding:96px 44px}
+    .sec-label{display:flex;align-items:center;gap:16px;margin-bottom:52px}
+    .sec-num{font-family:var(--mono);font-size:10px;color:var(--g);flex-shrink:0}
+    .sec-title{font-family:var(--serif);font-size:27px;color:#fff;white-space:nowrap}
     .sec-line{flex:1;height:1px;background:var(--border)}
- 
-    /* ── SOBRE MÍ ── */
-    .about-grid{display:grid;grid-template-columns:3fr 2fr;gap:48px;align-items:start}
-    .about-p{font-size:15px;color:#888;line-height:1.85;margin-bottom:18px}
+
+    /* PROYECTO DESTACADO */
+    .featured-card{
+      background:var(--bg3);border:1px solid var(--border);
+      display:grid;grid-template-columns:1fr 1fr;overflow:hidden;
+      transition:border-color 0.25s;
+    }
+    .featured-card:hover{border-color:var(--g-dim)}
+    .feat-left{padding:44px 40px;border-right:1px solid var(--border);display:flex;flex-direction:column}
+    .feat-tag{
+      font-family:var(--mono);font-size:9px;color:var(--g);
+      letter-spacing:0.12em;text-transform:uppercase;
+      border:1px solid var(--g-dim);padding:5px 12px;
+      display:inline-block;margin-bottom:24px;background:var(--g-dark);width:fit-content;
+    }
+    .feat-name{font-family:var(--serif);font-size:42px;color:#fff;line-height:1.05;margin-bottom:14px}
+    .feat-desc{font-size:14px;color:var(--muted2);line-height:1.8;margin-bottom:24px}
+    .feat-chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}
+    .chip{
+      font-family:var(--mono);font-size:9px;color:var(--g);
+      border:1px solid var(--g-dim);padding:4px 10px;
+      letter-spacing:0.05em;background:var(--g-dark);
+    }
+    .feat-right{padding:44px 40px;display:flex;flex-direction:column;gap:0}
+    .feat-step{padding:20px 0;border-bottom:1px solid var(--border)}
+    .feat-step:last-of-type{border-bottom:none}
+    .feat-step-label{font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:7px}
+    .feat-step-val{font-size:14px;color:var(--muted2);line-height:1.7}
+    .feat-step-val strong{color:var(--g);font-weight:500}
+    .feat-result{
+      margin-top:auto;padding:20px;background:var(--g-dark);border:1px solid var(--g-dim);
+    }
+    .feat-result-label{font-family:var(--mono);font-size:9px;color:var(--g);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px}
+    .feat-result-nums{display:flex;gap:32px}
+    .frn{display:flex;flex-direction:column;gap:3px}
+    .frn-big{font-family:var(--mono);font-size:24px;color:var(--g);font-weight:500}
+    .frn-small{font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase}
+
+    /* SOBRE MÍ */
+    .about-grid{display:grid;grid-template-columns:3fr 2fr;gap:52px;align-items:start}
+    .about-p{font-size:15px;color:var(--muted2);line-height:1.85;margin-bottom:16px}
     .about-p strong{color:var(--g);font-weight:500}
     .pillars{display:flex;flex-direction:column;gap:2px}
     .pillar{
-      background:var(--bg2);border:1px solid var(--border);
+      background:var(--bg3);border:1px solid var(--border);
       padding:18px 20px;border-left:2px solid var(--g);transition:background 0.2s;
     }
-    .pillar:hover{background:var(--bg3)}
-    .pillar-label{font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px}
-    .pillar-val{font-family:var(--serif);font-size:17px;color:#fff}
- 
-    /* ── EXPERIENCIA ── */
+    .pillar:hover{background:var(--bg4)}
+    .pillar-label{font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:5px}
+    .pillar-val{font-family:var(--serif);font-size:16px;color:#fff}
+
+    /* EXPERIENCIA */
     .exp-cards{display:flex;flex-direction:column;gap:2px}
     .exp-card{
-      background:var(--bg2);border:1px solid var(--border);
+      background:var(--bg3);border:1px solid var(--border);
       overflow:hidden;transition:border-color 0.2s;cursor:pointer;
     }
     .exp-card:hover{border-color:var(--g-dim)}
@@ -137,27 +204,19 @@
     .exp-period{font-family:var(--mono);font-size:10px;color:var(--muted);text-align:right;white-space:nowrap;margin-top:4px}
     .exp-body{padding:0 28px 26px;display:none}
     .exp-card.open .exp-body{display:block}
-    .exp-body p{font-size:14px;color:#777;line-height:1.75;margin-bottom:14px}
+    .exp-body p{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:14px}
     .exp-body ul{list-style:none;margin-bottom:14px}
-    .exp-body ul li{
-      font-size:13px;color:#777;line-height:1.7;
-      padding:5px 0 5px 18px;position:relative;
-    }
+    .exp-body ul li{font-size:13px;color:var(--muted);line-height:1.7;padding:5px 0 5px 18px;position:relative}
     .exp-body ul li::before{content:'→';position:absolute;left:0;color:var(--g);font-size:11px;top:6px}
-    .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
-    .chip{
-      font-family:var(--mono);font-size:9px;color:var(--g);
-      border:1px solid var(--g-dim);padding:4px 9px;
-      letter-spacing:0.05em;background:var(--g-dark);
-    }
- 
-    /* ── QUÉ PUEDO HACER ── */
+    .exp-body ul li strong{color:var(--muted2);font-weight:500}
+
+    /* QUÉ PUEDO HACER */
     .can-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px}
     .can-card{
-      background:var(--bg2);border:1px solid var(--border);
+      background:var(--bg3);border:1px solid var(--border);
       padding:28px 24px;transition:all 0.25s;position:relative;overflow:hidden;
     }
-    .can-card:hover{border-color:var(--g-dim);background:var(--bg3)}
+    .can-card:hover{border-color:var(--g-dim);background:var(--bg4);transform:translateY(-4px)}
     .can-card::after{
       content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
       background:linear-gradient(90deg,var(--g),var(--g2));
@@ -166,117 +225,243 @@
     .can-card:hover::after{transform:scaleX(1)}
     .can-num{font-family:var(--mono);font-size:10px;color:var(--muted);margin-bottom:16px}
     .can-title{font-family:var(--serif);font-size:17px;color:#fff;margin-bottom:10px;line-height:1.3}
-    .can-desc{font-size:13px;color:#666;line-height:1.7}
- 
-    /* ── HABILIDADES ── */
-    .skills-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:36px}
-    .sk-label{
-      font-family:var(--mono);font-size:9px;color:var(--muted);
-      letter-spacing:0.12em;text-transform:uppercase;
-      margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border);
+    .can-desc{font-size:13px;color:var(--muted);line-height:1.7}
+
+    /* SKILLS */
+    .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+    .sk-group{
+      background:var(--bg3);border:1px solid var(--border);
+      padding:26px 22px;transition:background 0.2s;
     }
-    .sk-list{display:flex;flex-direction:column;gap:7px}
-    .sk-item{display:flex;align-items:center;gap:10px;font-size:13px;color:#888}
-    .sk-dot{width:4px;height:4px;border-radius:50%;background:var(--g);flex-shrink:0}
- 
-    /* ── CONTACTO ── */
-    .contact-split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
-    .contact-h{font-family:var(--serif);font-size:40px;color:#fff;line-height:1.1;margin-bottom:18px}
+    .sk-group:hover{background:var(--bg4)}
+    .sk-group-label{
+      font-family:var(--mono);font-size:9px;color:var(--muted);
+      letter-spacing:0.14em;text-transform:uppercase;
+      margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border);
+    }
+    .sk-chips{display:flex;flex-wrap:wrap;gap:6px}
+    .sk-chip{
+      font-family:var(--mono);font-size:10px;
+      padding:5px 10px;border:1px solid var(--border);
+      color:var(--muted);background:var(--bg4);
+      transition:all 0.2s;cursor:default;
+    }
+    .sk-chip:hover,.sk-chip.main{border-color:var(--g-dim);color:var(--g);background:var(--g-dark)}
+
+    /* CONTACTO */
+    .contact-wrap{
+      background:var(--bg3);border:1px solid var(--border);
+      display:grid;grid-template-columns:1fr 1fr;overflow:hidden;
+    }
+    .contact-left{
+      padding:52px 48px;border-right:1px solid var(--border);
+      display:flex;flex-direction:column;justify-content:space-between;
+    }
+    .contact-h{font-family:var(--serif);font-size:clamp(34px,4vw,50px);color:#fff;line-height:1.05;margin-bottom:18px}
     .contact-h em{color:var(--g);font-style:italic}
-    .contact-sub{font-size:14px;color:var(--muted2);line-height:1.8}
-    .contact-items{display:flex;flex-direction:column;gap:8px}
+    .contact-sub{font-size:14px;color:var(--muted2);line-height:1.85}
+    .contact-avail{
+      margin-top:36px;display:inline-flex;align-items:center;gap:8px;
+      font-family:var(--mono);font-size:10px;color:var(--g);
+      letter-spacing:0.1em;text-transform:uppercase;
+      border:1px solid var(--g-dim);padding:8px 16px;width:fit-content;background:var(--g-dark);
+    }
+    .contact-avail::before{
+      content:'';width:6px;height:6px;border-radius:50%;
+      background:var(--g);animation:pulse 2s infinite;flex-shrink:0;
+    }
+    .contact-right{padding:52px 48px;display:flex;flex-direction:column;gap:8px;justify-content:center}
     .c-item{
-      display:flex;flex-direction:column;padding:16px 18px;
+      display:flex;flex-direction:column;padding:18px 20px;
       border:1px solid var(--border);text-decoration:none;transition:all 0.2s;
     }
     .c-item:hover{border-color:var(--g);background:var(--g-dark)}
-    .c-label{font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px}
-    .c-val{font-size:13px;color:var(--muted2)}
- 
-    /* ── FOOTER ── */
+    .c-label{font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:5px}
+    .c-val{font-size:13px;color:var(--muted2);transition:color 0.2s}
+    .c-item:hover .c-val{color:var(--g)}
+
+    /* FOOTER */
     footer{
-      padding:36px 0;border-top:1px solid var(--border);
+      max-width:960px;margin:0 auto;padding:32px 44px;
+      border-top:1px solid var(--border);
       display:flex;justify-content:space-between;align-items:center;
     }
     .ft{font-family:var(--mono);font-size:10px;color:var(--muted)}
- 
-    /* ── RESPONSIVE ── */
-    @media(max-width:768px){
-      nav{padding:20px 24px}
+
+    /* RESPONSIVE */
+    @media(max-width:820px){
+      nav{padding:18px 22px}
       .nav-links{display:none}
-      .wrap{padding:0 20px 80px}
-      .hero{grid-template-columns:1fr;gap:40px;padding:60px 0 40px}
+      .wrap{padding:0 22px 80px}
+      .hero{grid-template-columns:1fr;gap:36px;padding:52px 0 40px}
       .hero-img-wrap{width:160px}
-      .hero-img-frame{width:160px;height:200px}
+      .hero-img-frame{width:160px;height:204px}
+      .stat-strip{grid-template-columns:1fr 1fr}
+      .stat-item:nth-child(2){border-right:none}
+      .stat-item:nth-child(3){border-top:1px solid var(--border)}
+      .featured-card{grid-template-columns:1fr}
+      .feat-left{border-right:none;border-bottom:1px solid var(--border);padding:32px 26px}
+      .feat-right{padding:32px 26px}
       .about-grid{grid-template-columns:1fr}
       .can-grid{grid-template-columns:1fr 1fr}
-      .skills-wrap{grid-template-columns:1fr 1fr}
-      .contact-split{grid-template-columns:1fr}
+      .skills-grid{grid-template-columns:1fr 1fr}
+      .contact-wrap{grid-template-columns:1fr}
+      .contact-left{border-right:none;border-bottom:1px solid var(--border);padding:36px 32px}
+      .contact-right{padding:36px 32px}
+      .sec-alt{margin:0 -22px;padding:96px 22px}
+      footer{padding:28px 22px}
     }
     @media(max-width:520px){
       .can-grid{grid-template-columns:1fr}
-      .skills-wrap{grid-template-columns:1fr}
+      .skills-grid{grid-template-columns:1fr}
+      .impact-before,.impact-after{font-size:28px}
     }
   </style>
 </head>
 <body>
- 
+
 <nav>
   <span class="logo">np.dev</span>
   <div class="nav-links">
-    <a href="#sobre">sobre</a>
+    <a href="#proyecto">proyecto</a>
+    <a href="#sobre">sobre mí</a>
     <a href="#experiencia">experiencia</a>
-    <a href="#puedo">qué puedo hacer</a>
+    <a href="#puedo">servicios</a>
     <a href="#skills">skills</a>
-    <a href="#contacto">contacto</a>
+    <a href="#contacto" class="nav-cta">Contrátame</a>
   </div>
 </nav>
- 
+
 <div class="wrap">
- 
+
   <!-- HERO -->
   <section class="hero">
     <div>
-      <div class="hero-available">Disponible para trabajar</div>
-      <h1>Desarrollo web.<br><em>Con visión</em><br>de negocio.</h1>
+      <div class="avail-badge">Disponible para trabajar</div>
+
+      <div class="hero-impact">
+        <span class="impact-before">1h</span>
+        <span class="impact-arrow">→</span>
+        <span class="impact-after">40s</span>
+        <span class="impact-caption">proceso manual<br>eliminado con IA</span>
+      </div>
+
+      <h1>Automatizo procesos<br>con IA. <em>Ahorro tiempo<br>real</em> a empresas.</h1>
       <div class="hero-subtitle">Néstor Pérez · Zamora, España</div>
       <p class="hero-desc">
-        Perfil híbrido: código y finanzas.
-        <strong>Construyo herramientas que resuelven problemas reales</strong>
-        — no espero que me los señalen.
+        Desarrollador full stack con perfil negocio + técnico.
+        He creado <span class="highlight">herramientas que reducen horas de trabajo manual a minutos</span>
+        — desplegadas en producción, no en un repositorio privado.
       </p>
       <div class="cta-row">
-        <a class="btn-p" href="#puedo">Qué puedo hacer</a>
-        <a class="btn-g" href="#contacto">Contactar</a>
+        <a class="btn-p" href="https://github.com/NestorSoftware/FacturApp">Ver proyecto destacado</a>
+        <a class="btn-g" href="mailto:nestorperez.tech@gmail.com">Contactar</a>
       </div>
     </div>
     <div class="hero-img-wrap">
       <div class="hero-img-frame">
-        <!--
-          ════════════════════════════════════════
-          AÑADE TU FOTO AQUÍ:
-          1. Sube tu foto al repo con el nombre "foto.jpg"
-          2. Cambia src="" por src="foto.jpg"
-          ════════════════════════════════════════
-        -->
-        <img class="hero-img-real" src="FotoPerfilCurriculum.jpg" alt="Néstor Pérez"
+        <img src="FotoPerfilCurriculum.jpg" alt="Néstor Pérez"
              onerror="this.style.display='none';document.getElementById('noimg').style.display='flex'"/>
-        <div id="noimg" style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:10px">
+        <div id="noimg" style="display:none;flex-direction:column;align-items:center;justify-content:center;height:100%">
           <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-align:center;letter-spacing:0.1em;padding:20px">
-            AÑADE TU FOTO<br><br>
-            src="foto.jpg"
+            FOTO<br><br>src="foto.jpg"
           </div>
         </div>
       </div>
       <div class="img-tag">
         <div class="img-tag-name">Néstor Pérez</div>
-        <div class="img-tag-loc">Zamora · España</div>
+        <div class="img-tag-loc">Zamora · España · Remoto</div>
       </div>
     </div>
   </section>
- 
-  <!-- SOBRE MÍ -->
-  <section class="sec" id="sobre">
+
+  <!-- STAT STRIP -->
+  <div class="stat-strip">
+    <div class="stat-item">
+      <div class="stat-num">+4000</div>
+      <div class="stat-label">facturas procesadas<br>automáticamente</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">~85%</div>
+      <div class="stat-label">reducción tiempo<br>administrativo</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2</div>
+      <div class="stat-label">ciclos formativos<br>técnico + negocio</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">OPEN TO WORK<br><span style="font-size:13px">2026</span></div>
+      <div class="stat-label">disponible para<br>incorporación o proyectos</div>
+    </div>
+  </div>
+
+  <!-- PROYECTO DESTACADO -->
+  <section class="sec" id="proyecto">
+    <div class="sec-label">
+      <span class="sec-num">00</span>
+      <span class="sec-title">Proyecto destacado</span>
+      <div class="sec-line"></div>
+    </div>
+    <div class="featured-card">
+      <div class="feat-left">
+        <span class="feat-tag">IA en producción · 2026</span>
+        <div class="feat-name">FacturApp</div>
+        <p class="feat-desc">
+          Herramienta de automatización con <strong style="color:var(--g);font-weight:500">GPT-4 Vision</strong>
+          para extracción inteligente de datos de facturas.
+          Procesa PDF, Word, imágenes escaneadas y Excel.
+          Integrada con Google Drive y el CRM de la empresa.
+          Desplegada en servidor Debian propio.
+        </p>
+        <div class="feat-chips">
+          <span class="chip">Node.js</span>
+          <span class="chip">GPT-4 Vision</span>
+          <span class="chip">Docker</span>
+          <span class="chip">Express</span>
+          <span class="chip">WordPress</span>
+          <span class="chip">Google Drive API</span>
+          <span class="chip">PHP</span>
+          <span class="chip">Gotenberg</span>
+          <span class="chip">Java</span>
+        </div>
+      </div>
+      <div class="feat-right">
+        <div class="feat-step">
+          <div class="feat-step-label">El problema</div>
+          <div class="feat-step-val">El equipo de administración dedicaba <strong>horas cada semana</strong> a abrir, leer, renombrar y archivar facturas manualmente. Formatos distintos, proveedores distintos, errores humanos.</div>
+        </div>
+        <div class="feat-step">
+          <div class="feat-step-label">La solución</div>
+          <div class="feat-step-val">Un sistema que recibe la factura, <strong>extrae los datos con visión artificial</strong>, normaliza el nombre según las reglas del CRM y lo archiva en la carpeta correcta de Drive automáticamente.</div>
+        </div>
+        <div class="feat-step">
+          <div class="feat-step-label">Iniciativa propia</div>
+          <div class="feat-step-val">No era parte del plan de prácticas. <strong>Vi el problema, propuse la solución y la desplegué</strong> sin supervisión técnica externa.</div>
+        </div>
+        <div class="feat-result">
+          <div class="feat-result-label">Resultado medido</div>
+          <div class="feat-result-nums">
+            <div class="frn">
+              <span class="frn-big">~1h</span>
+              <span class="frn-small">antes / semana</span>
+            </div>
+            <div style="font-family:var(--mono);font-size:18px;color:#2a2a2a;align-self:center">→</div>
+            <div class="frn">
+              <span class="frn-big">40s</span>
+              <span class="frn-small">ahora / factura</span>
+            </div>
+            <div class="frn" style="margin-left:auto">
+              <span class="frn-big">+4000</span>
+              <span class="frn-small">procesadas</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE MÍ (fondo alterno) -->
+  <section class="sec sec-alt" id="sobre">
     <div class="sec-label">
       <span class="sec-num">01</span>
       <span class="sec-title">Sobre mí</span>
@@ -285,18 +470,17 @@
     <div class="about-grid">
       <div>
         <p class="about-p">
-          Soy desarrollador web con un perfil poco habitual: combino un
-          <strong>Grado Superior en DAW</strong> con formación en
-          <strong>Administración y Finanzas</strong>. Eso me da algo que pocos juniors tienen
-          — entiendo el negocio detrás del código y el código detrás del negocio.
+          Perfil poco habitual: combino un <strong>Grado Superior en DAW</strong> con formación en
+          <strong>Administración y Finanzas</strong>. Entiendo el negocio detrás del código
+          y el código detrás del negocio.
         </p>
         <p class="about-p">
-          Me adapto rápido a entornos nuevos y trabajo con autonomía en proyectos complejos.
+          Trabajo con autonomía en proyectos complejos.
           En mis prácticas <strong>desarrollé desde cero una herramienta de automatización con IA</strong>
-          sin que nadie me lo pidiera. Vi el problema, diseñé la solución y la desplegué en producción.
+          sin que nadie me lo pidiera — la vi, la diseñé y la desplegué en producción.
         </p>
         <p class="about-p">
-          Abierto a oportunidades en <strong>Zamora o en remoto</strong>.
+          <strong>Disponible a partir de junio 2026</strong>, en Zamora o en remoto.
         </p>
       </div>
       <div class="pillars">
@@ -319,7 +503,7 @@
       </div>
     </div>
   </section>
- 
+
   <!-- EXPERIENCIA -->
   <section class="sec" id="experiencia">
     <div class="sec-label">
@@ -328,7 +512,7 @@
       <div class="sec-line"></div>
     </div>
     <div class="exp-cards">
- 
+
       <div class="exp-card open" onclick="toggleCard(this)">
         <div class="exp-top">
           <div>
@@ -338,30 +522,23 @@
           <div class="exp-period">03/2026 — actualidad</div>
         </div>
         <div class="exp-body">
-          <p>
-            Único desarrollador en una agencia especializada en viajes del Camino de Santiago.
-            Autonomía total sobre las decisiones técnicas y la arquitectura de los proyectos.
-          </p>
+          <p>Único desarrollador. Autonomía total sobre arquitectura y decisiones técnicas.</p>
           <ul>
-            <li>Diseño e implementación de <strong>FacturApp</strong>: herramienta con IA (GPT-4 Vision) para extracción automática de datos de facturas. Reduce horas de trabajo manual del departamento de administración a minutos.</li>
-            <li>Procesamiento de múltiples formatos: PDF, Word, imágenes escaneadas, Excel. Integración con CRM y Google Drive vía rclone.</li>
-            <li>Desarrollo y migración del sitio web corporativo a WordPress con Elementor.</li>
-            <li>Despliegue y mantenimiento en servidor Debian propio con Docker Compose.</li>
-            <li>Herramientas internas: generador de presupuestos para el equipo comercial, directorio de proveedores de transporte.</li>
+            <li>FacturApp: <strong>automatización con GPT-4 Vision que eliminó ~8h semanales</strong> de trabajo manual en administración. Procesa +500 facturas en producción.</li>
+            <li>Procesamiento de PDF, Word, imágenes escaneadas y Excel. Integración con CRM y Google Drive.</li>
+            <li>Migración y desarrollo del sitio web corporativo en WordPress + Elementor.</li>
+            <li>Despliegue en servidor Debian con Docker Compose. Infraestructura mantenida en solitario.</li>
+            <li>Herramientas internas: generador de presupuestos para ventas, directorio de proveedores de transporte.</li>
           </ul>
-          <div class="chips">
-            <span class="chip">Node.js</span>
-            <span class="chip">GPT-4 Vision</span>
-            <span class="chip">Docker</span>
-            <span class="chip">WordPress</span>
-            <span class="chip">n8n</span>
-            <span class="chip">Express</span>
-            <span class="chip">Google Drive API</span>
-            <span class="chip">Debian</span>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">
+            <span class="chip">Node.js</span><span class="chip">GPT-4 Vision</span>
+            <span class="chip">Docker</span><span class="chip">WordPress</span>
+            <span class="chip">n8n</span><span class="chip">Express</span>
+            <span class="chip">Google Drive API</span><span class="chip">Debian</span>
           </div>
         </div>
       </div>
- 
+
       <div class="exp-card" onclick="toggleCard(this)">
         <div class="exp-top">
           <div>
@@ -372,23 +549,21 @@
         </div>
         <div class="exp-body">
           <ul>
-            <li>Captación de contactos profesionales B2B para pasarela de pagos en criptomonedas.</li>
-            <li>Presentación de servicios fintech a potenciales clientes empresariales.</li>
+            <li>Captación B2B para pasarela de pagos en criptomonedas.</li>
+            <li>Presentación de servicios fintech a clientes empresariales.</li>
             <li>Primer contacto con el sector blockchain y pagos digitales.</li>
           </ul>
-          <div class="chips">
-            <span class="chip">Fintech</span>
-            <span class="chip">B2B</span>
-            <span class="chip">Blockchain</span>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">
+            <span class="chip">Fintech</span><span class="chip">B2B</span><span class="chip">Blockchain</span>
           </div>
         </div>
       </div>
- 
+
     </div>
   </section>
- 
-  <!-- QUÉ PUEDO HACER -->
-  <section class="sec" id="puedo">
+
+  <!-- QUÉ PUEDO HACER (fondo alterno) -->
+  <section class="sec sec-alt" id="puedo">
     <div class="sec-label">
       <span class="sec-num">03</span>
       <span class="sec-title">Qué puedo hacer por tu empresa</span>
@@ -398,12 +573,12 @@
       <div class="can-card">
         <div class="can-num">01</div>
         <div class="can-title">Automatizar procesos con IA</div>
-        <div class="can-desc">Identifico tareas repetitivas y construyo herramientas que las eliminan. Extracción de datos, procesamiento de documentos, flujos automáticos con n8n.</div>
+        <div class="can-desc">Identifico tareas repetitivas y construyo herramientas que las eliminan. Extracción de datos, procesamiento de documentos, flujos automáticos.</div>
       </div>
       <div class="can-card">
         <div class="can-num">02</div>
         <div class="can-title">Desarrollo web full stack</div>
-        <div class="can-desc">Aplicaciones web desde cero con arquitectura limpia. PHP MVC, Node.js, PostgreSQL, Docker. Sin frameworks innecesarios cuando no hacen falta.</div>
+        <div class="can-desc">Aplicaciones web desde cero con arquitectura limpia. PHP MVC, Node.js, PostgreSQL, Docker. Orientado a resolver problemas reales.</div>
       </div>
       <div class="can-card">
         <div class="can-num">03</div>
@@ -413,84 +588,96 @@
       <div class="can-card">
         <div class="can-num">04</div>
         <div class="can-title">Despliegue y mantenimiento</div>
-        <div class="can-desc">Servidores Linux/Debian, Docker Compose, integración con servicios cloud. Monto y mantengo infraestructura para que las aplicaciones funcionen en producción.</div>
+        <div class="can-desc">Servidores Linux/Debian, Docker Compose, servicios cloud. Monto y mantengo infraestructura para que las aplicaciones funcionen en producción.</div>
       </div>
       <div class="can-card">
         <div class="can-num">05</div>
         <div class="can-title">Herramientas internas a medida</div>
-        <div class="can-desc">Aplicaciones para equipos: generadores de presupuestos, directorios, gestión documental. Soluciones que el equipo realmente usa.</div>
+        <div class="can-desc">Generadores de presupuestos, directorios, gestión documental. Soluciones que el equipo realmente usa.</div>
       </div>
       <div class="can-card">
         <div class="can-num">06</div>
         <div class="can-title">Visión técnica + de negocio</div>
-        <div class="can-desc">Formación en Administración y Finanzas. Entiendo los procesos de negocio que hay que digitalizar y cómo hablar con el equipo no técnico.</div>
+        <div class="can-desc">Formación en Administración y Finanzas. Entiendo los procesos que hay que digitalizar y cómo hablar con el equipo no técnico.</div>
       </div>
     </div>
   </section>
- 
-  <!-- HABILIDADES -->
+
+  <!-- SKILLS -->
   <section class="sec" id="skills">
     <div class="sec-label">
       <span class="sec-num">04</span>
       <span class="sec-title">Habilidades técnicas</span>
       <div class="sec-line"></div>
     </div>
-    <div class="skills-wrap">
-      <div>
-        <div class="sk-label">Backend</div>
-        <div class="sk-list">
-          <div class="sk-item"><span class="sk-dot"></span>Node.js · Express</div>
-          <div class="sk-item"><span class="sk-dot"></span>PHP 8 · MVC</div>
-          <div class="sk-item"><span class="sk-dot"></span>REST API</div>
-          <div class="sk-item"><span class="sk-dot"></span>PostgreSQL · MySQL</div>
+    <div class="skills-grid">
+      <div class="sk-group">
+        <div class="sk-group-label">Backend</div>
+        <div class="sk-chips">
+          <span class="sk-chip main">Node.js</span>
+          <span class="sk-chip main">Express</span>
+          <span class="sk-chip main">PHP 8</span>
+          <span class="sk-chip">MVC</span>
+          <span class="sk-chip">REST API</span>
+          <span class="sk-chip">PostgreSQL</span>
+          <span class="sk-chip">MySQL</span>
+          <span class="sk-chip">Java</span>
         </div>
       </div>
-      <div>
-        <div class="sk-label">Frontend</div>
-        <div class="sk-list">
-          <div class="sk-item"><span class="sk-dot"></span>JavaScript</div>
-          <div class="sk-item"><span class="sk-dot"></span>HTML · CSS</div>
-          <div class="sk-item"><span class="sk-dot"></span>WordPress · Elementor</div>
-          <div class="sk-item"><span class="sk-dot"></span>Bootstrap</div>
+      <div class="sk-group">
+        <div class="sk-group-label">Frontend</div>
+        <div class="sk-chips">
+          <span class="sk-chip main">JavaScript</span>
+          <span class="sk-chip main">HTML · CSS</span>
+          <span class="sk-chip main">WordPress</span>
+          <span class="sk-chip">Elementor</span>
+          <span class="sk-chip">Bootstrap</span>
+          <span class="sk-chip">Responsive</span>
         </div>
       </div>
-      <div>
-        <div class="sk-label">DevOps &amp; Infra</div>
-        <div class="sk-list">
-          <div class="sk-item"><span class="sk-dot"></span>Docker · Compose</div>
-          <div class="sk-item"><span class="sk-dot"></span>Linux · Debian</div>
-          <div class="sk-item"><span class="sk-dot"></span>Git · GitHub</div>
-          <div class="sk-item"><span class="sk-dot"></span>rclone · Google Drive</div>
+      <div class="sk-group">
+        <div class="sk-group-label">DevOps &amp; Infra</div>
+        <div class="sk-chips">
+          <span class="sk-chip main">Docker</span>
+          <span class="sk-chip main">Linux · Debian</span>
+          <span class="sk-chip main">Git · GitHub</span>
+          <span class="sk-chip">Docker Compose</span>
+          <span class="sk-chip">rclone</span>
+          <span class="sk-chip">Apache</span>
         </div>
       </div>
-      <div>
-        <div class="sk-label">IA &amp; Automatización</div>
-        <div class="sk-list">
-          <div class="sk-item"><span class="sk-dot"></span>GPT-4 Vision</div>
-          <div class="sk-item"><span class="sk-dot"></span>n8n workflows</div>
-          <div class="sk-item"><span class="sk-dot"></span>Prompt engineering</div>
-          <div class="sk-item"><span class="sk-dot"></span>OCR · Gotenberg</div>
+      <div class="sk-group">
+        <div class="sk-group-label">IA &amp; Automatización</div>
+        <div class="sk-chips">
+          <span class="sk-chip main">GPT-4 Vision</span>
+          <span class="sk-chip main">n8n</span>
+          <span class="sk-chip">Prompt engineering</span>
+          <span class="sk-chip">OCR</span>
+          <span class="sk-chip">Gotenberg</span>
+          <span class="sk-chip">Apps Script</span>
         </div>
       </div>
-      <div>
-        <div class="sk-label">Negocio &amp; Gestión</div>
-        <div class="sk-list">
-          <div class="sk-item"><span class="sk-dot"></span>Contasol · Factusol</div>
-          <div class="sk-item"><span class="sk-dot"></span>Excel · Access</div>
-          <div class="sk-item"><span class="sk-dot"></span>Gestión documental</div>
-          <div class="sk-item"><span class="sk-dot"></span>Procesos administrativos</div>
+      <div class="sk-group">
+        <div class="sk-group-label">Negocio &amp; Gestión</div>
+        <div class="sk-chips">
+          <span class="sk-chip main">Contasol · Factusol</span>
+          <span class="sk-chip">Excel avanzado</span>
+          <span class="sk-chip">Access</span>
+          <span class="sk-chip">Gestión documental</span>
+          <span class="sk-chip">Procesos adm.</span>
         </div>
       </div>
-      <div>
-        <div class="sk-label">Idiomas</div>
-        <div class="sk-list">
-          <div class="sk-item"><span class="sk-dot"></span>Español nativo</div>
-          <div class="sk-item"><span class="sk-dot"></span>Inglés B2</div>
+      <div class="sk-group">
+        <div class="sk-group-label">Idiomas</div>
+        <div class="sk-chips">
+          <span class="sk-chip main">Español nativo</span>
+          <span class="sk-chip main">Inglés B2</span>
+          <span class="sk-chip" style="font-size:9px;color:var(--muted)">Bristol · 2 años</span>
         </div>
       </div>
     </div>
   </section>
- 
+
   <!-- CONTACTO -->
   <section class="sec" id="contacto">
     <div class="sec-label">
@@ -498,15 +685,18 @@
       <span class="sec-title">Contacto</span>
       <div class="sec-line"></div>
     </div>
-    <div class="contact-split">
-      <div>
-        <div class="contact-h">¿Hablamos<br><em>en serio?</em></div>
-        <p class="contact-sub">
-          Disponible para incorporación inmediata en Zamora o en remoto.
-          Respondo rápido y voy al grano.
-        </p>
+    <div class="contact-wrap">
+      <div class="contact-left">
+        <div>
+          <div class="contact-h">¿Quieres automatizar<br>procesos<br><em>de verdad?</em></div>
+          <p class="contact-sub">
+            Disponible a partir de junio 2026.<br>
+            Zamora o remoto. Respondo rápido y voy al grano.
+          </p>
+        </div>
+        <div class="contact-avail">Disponible para trabajar</div>
       </div>
-      <div class="contact-items">
+      <div class="contact-right">
         <a class="c-item" href="https://linkedin.com/in/nestor-perez-web" target="_blank" rel="noopener">
           <span class="c-label">LinkedIn</span>
           <span class="c-val">linkedin.com/in/nestor-perez-web</span>
@@ -515,21 +705,21 @@
           <span class="c-label">GitHub</span>
           <span class="c-val">github.com/NestorSoftware</span>
         </a>
-        <a class="c-item" href="mailto:nestoradf1@gmail.com">
+        <a class="c-item" href="mailto:nestorperez.tech@gmail.com">
           <span class="c-label">Email</span>
           <span class="c-val">nestorperez.tech@gmail.com</span>
         </a>
       </div>
     </div>
   </section>
- 
-</div><!-- /wrap -->
- 
-<footer style="max-width:960px;margin:0 auto;padding:36px 40px;border-top:1px solid var(--border);display:flex;justify-content:space-between">
+
+</div>
+
+<footer>
   <span class="ft">Néstor Pérez · 2026</span>
-  <span class="ft">Zamora, España</span>
+  <span class="ft">Zamora, España — disponible remoto</span>
 </footer>
- 
+
 <script>
   function toggleCard(el){
     var cards=document.querySelectorAll('.exp-card');
@@ -538,6 +728,6 @@
     if(!wasOpen)el.classList.add('open');
   }
 </script>
- 
+
 </body>
 </html>
