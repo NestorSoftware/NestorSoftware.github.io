@@ -61,7 +61,8 @@
       background:var(--g);animation:pulse 2s infinite;flex-shrink:0;
     }
     @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.2}}
-
+    /* Ocultar foto móvil en escritorio */
+    .hero-img-mobile{display:none}
     .hero-impact{
       display:flex;align-items:baseline;gap:12px;
       font-family:var(--mono);margin-bottom:24px;flex-wrap:wrap;
@@ -278,7 +279,7 @@
     .c-label{font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:5px}
     .c-val{font-size:13px;color:var(--muted2);transition:color 0.2s}
     .c-item:hover .c-val{color:var(--g)}
-
+    
     /* FOOTER */
     footer{
       max-width:960px;margin:0 auto;padding:32px 44px;
@@ -367,6 +368,15 @@
 
       footer{padding:24px 20px;flex-direction:column;align-items:flex-start;gap:4px}
     }
+    /* Foto móvil: centrada entre desc y botones */
+    .hero-img-mobile{
+      display:flex;justify-content:center;margin:28px 0;
+    }
+    .hero-img-mobile .hero-img-frame{
+      width:140px;height:180px;
+    }
+    /* Ocultar foto desktop en móvil */
+    .hero-img-desktop{display:none}
 
     @media(max-width:420px){
       .hero h1{font-size:32px}
@@ -394,45 +404,56 @@
 <div class="wrap">
 
   <!-- HERO -->
-  <section class="hero">
-    <div>
-      <div class="avail-badge">Disponible para trabajar</div>
+<section class="hero">
+  <div>
+    <div class="avail-badge">Disponible para trabajar</div>
 
-      <div class="hero-impact">
-        <span class="impact-before">1h</span>
-        <span class="impact-arrow">→</span>
-        <span class="impact-after">40s</span>
-        <span class="impact-caption">proceso manual<br>eliminado con IA</span>
-      </div>
-
-      <h1>Automatizo procesos<br>con IA. <em>Ahorro tiempo<br>real</em> a empresas.</h1>
-      <div class="hero-subtitle">Néstor Pérez · Zamora, España</div>
-      <p class="hero-desc">
-        Desarrollador full stack con perfil negocio + técnico.
-        He creado <span class="highlight">herramientas que reducen horas de trabajo manual a minutos</span>
-        — desplegadas en producción, no en un repositorio privado.
-      </p>
-      <div class="cta-row">
-        <a class="btn-p" href="https://github.com/NestorSoftware/FacturApp">Ver proyecto destacado</a>
-        <a class="btn-g" href="mailto:nestorperez.tech@gmail.com">Contactar</a>
-      </div>
+    <div class="hero-impact">
+      <span class="impact-before">1h</span>
+      <span class="impact-arrow">→</span>
+      <span class="impact-after">40s</span>
+      <span class="impact-caption">proceso manual<br>eliminado con IA</span>
     </div>
-    <div class="hero-img-wrap">
+
+    <h1>Automatizo procesos<br>con IA. <em>Ahorro tiempo<br>real</em> a empresas.</h1>
+    <div class="hero-subtitle">Néstor Pérez · Zamora, España</div>
+    <p class="hero-desc">
+      Desarrollador full stack con perfil negocio + técnico.
+      He creado <span class="highlight">herramientas que reducen horas de trabajo manual a minutos</span>
+      — desplegadas en producción, no en un repositorio privado.
+    </p>
+
+    <!-- FOTO solo visible en móvil, entre desc y botones -->
+    <div class="hero-img-mobile">
       <div class="hero-img-frame">
         <img src="1777642205586.png" alt="Néstor Pérez"
-             onerror="this.style.display='none';document.getElementById('noimg').style.display='flex'"/>
-        <div id="noimg" style="display:none;flex-direction:column;align-items:center;justify-content:center;height:100%">
-          <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-align:center;letter-spacing:0.1em;padding:20px">
-            FOTO<br><br>src="foto.jpg"
-          </div>
-        </div>
-      </div>
-      <div class="img-tag">
-        <div class="img-tag-name">Néstor Pérez</div>
-        <div class="img-tag-loc">Zamora · España · Remoto</div>
+             onerror="this.style.display='none'"/>
       </div>
     </div>
-  </section>
+
+    <div class="cta-row">
+      <a class="btn-p" href="https://github.com/NestorSoftware/FacturApp">Ver proyecto destacado</a>
+      <a class="btn-g" href="mailto:nestorperez.tech@gmail.com">Contactar</a>
+    </div>
+  </div>
+
+  <!-- FOTO solo visible en escritorio -->
+  <div class="hero-img-wrap hero-img-desktop">
+    <div class="hero-img-frame">
+      <img src="1777642205586.png" alt="Néstor Pérez"
+           onerror="this.style.display='none';document.getElementById('noimg').style.display='flex'"/>
+      <div id="noimg" style="display:none;flex-direction:column;align-items:center;justify-content:center;height:100%">
+        <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-align:center;letter-spacing:0.1em;padding:20px">
+          FOTO<br><br>src="foto.jpg"
+        </div>
+      </div>
+    </div>
+    <div class="img-tag">
+      <div class="img-tag-name">Néstor Pérez</div>
+      <div class="img-tag-loc">Zamora · España · Remoto</div>
+    </div>
+  </div>
+</section>
 
   <!-- STAT STRIP -->
   <div class="stat-strip">
