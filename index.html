@@ -62,7 +62,7 @@
     }
     @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.2}}
     /* Ocultar foto móvil en escritorio */
-    .hero-img-mobile{display:none}
+    
     .hero-impact{
       display:flex;align-items:baseline;gap:12px;
       font-family:var(--mono);margin-bottom:24px;flex-wrap:wrap;
@@ -112,6 +112,7 @@
       position:absolute;bottom:-1px;left:-1px;right:-1px;
       background:var(--bg);border:1px solid var(--border);padding:10px 14px;
     }
+    .hero-img-mobile{display:none}
     .img-tag-name{font-family:var(--serif);font-size:14px;color:#fff}
     .img-tag-loc{font-family:var(--mono);font-size:9px;color:var(--muted);margin-top:3px}
 
@@ -367,16 +368,17 @@
       .contact-right{padding:32px 24px}
 
       footer{padding:24px 20px;flex-direction:column;align-items:flex-start;gap:4px}
-    }
-    /* Foto móvil: centrada entre desc y botones */
-    .hero-img-mobile{
-      display:flex;justify-content:center;margin:28px 0;
-    }
-    .hero-img-mobile .hero-img-frame{
-      width:140px;height:180px;
-    }
-    /* Ocultar foto desktop en móvil */
-    .hero-img-desktop{display:none}
+
+      /* Foto móvil: centrada entre desc y botones */
+      .hero-img-mobile{
+        display:flex;justify-content:center;margin:28px 0;
+      }
+      .hero-img-mobile .hero-img-frame{
+        width:140px;height:180px;
+      }
+      /* Ocultar foto desktop en móvil */
+      .hero-img-desktop{display:none}
+      }
 
     @media(max-width:420px){
       .hero h1{font-size:32px}
